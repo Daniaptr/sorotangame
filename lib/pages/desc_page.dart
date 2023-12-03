@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DescPage extends StatelessWidget {
-  final String avatar,
-      name,
-      genre,
-      rating,
-      desk,
-      imageUrl1,
-      imageUrl2,
-      imageUrl3;
-
   const DescPage({
     Key? key,
     required this.avatar,
@@ -22,6 +13,15 @@ class DescPage extends StatelessWidget {
     required this.imageUrl2,
     required this.imageUrl3,
   }) : super(key: key);
+
+  final String avatar,
+      name,
+      genre,
+      rating,
+      desk,
+      imageUrl1,
+      imageUrl2,
+      imageUrl3;
 
   @override
   Widget build(BuildContext context) {

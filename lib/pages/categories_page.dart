@@ -41,7 +41,25 @@ class _CategoriesPageState extends State<CategoriesPage> {
           },
         ),
       ),
-      body: Column(
+      body: CategoriesView(searchController: searchController, data: data),
+    );
+  }
+}
+
+class CategoriesView extends StatelessWidget {
+  const CategoriesView({
+    super.key,
+    required this.searchController,
+    required this.data,
+  });
+
+  final TextEditingController searchController;
+  final List<GameData> data;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(
         children: <Widget>[
           Padding(
             padding: EdgeInsets.all(0),

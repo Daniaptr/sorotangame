@@ -9,7 +9,7 @@ class PopularWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 170,
+      height: 180,
       child: CarouselSlider.builder(
         itemCount: 5,
         itemBuilder: (BuildContext context, int index, int realIndex) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sorotangame/widgets/navbar.dart';
+import 'package:sorotangame/pages/login_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/GetStarted.png"),
+            image: AssetImage("assets/images/GetStarted.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -45,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
                     onPressed: () {
                       // Pindah ke halaman kedua saat tombol ditekan
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => CustomNavBar()),
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                       );
                     },
                     child: Text('Get Started'),
