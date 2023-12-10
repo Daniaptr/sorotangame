@@ -1,5 +1,9 @@
 class DataGame {
+<<<<<<< HEAD
   String id;
+=======
+  int id;
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
   String name;
   String genre;
   String avatar;

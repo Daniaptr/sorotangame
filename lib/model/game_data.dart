@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
+=======
+import 'package:cloud_firestore/cloud_firestore.dart';
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
 import 'package:sorotangame/server/dbservice.dart';
 
 CollectionReference tbDataGame = FirebaseFirestore.instance.collection("game");
@@ -14,7 +18,11 @@ class Database {
     return tbDataGame.snapshots();
   }
 
+<<<<<<< HEAD
   //  ---------- METHOD SEARCH DATAGAME ----------  //
+=======
+  //  ---------- METHOD SEARCH DataGametbDataGame ----------  //
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
   static Stream<QuerySnapshot> searchDataGame(String keyword) {
     if (keyword.isEmpty) {
       return tbDataGame.snapshots();
@@ -50,16 +58,26 @@ class Database {
   }
 
   //  ---------- METHOD DETAIL ----------  //
+<<<<<<< HEAD
   static Future<DataGame> getdataGame({required String name}) async {
     QuerySnapshot querySnapshot =
         await tbDataGame.where("name", isEqualTo: name).get();
+=======
+  static Future<DataGame> getDataGame({required String title}) async {
+    QuerySnapshot querySnapshot =
+        await tbDataGame.where("name", isEqualTo: title).get();
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
 
     if (querySnapshot.docs.isNotEmpty) {
       DocumentSnapshot docSnapshot = querySnapshot.docs.first;
       Map<String, dynamic> data = docSnapshot.data() as Map<String, dynamic>;
       return DataGame.fromJson(data);
     } else {
+<<<<<<< HEAD
       throw Exception("Data dengan judul $name tidak ditemukan");
+=======
+      throw Exception("Data dengan judul $DataGame tidak ditemukan");
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
     }
   }
 
@@ -74,6 +92,7 @@ class Database {
       throw Exception("Data tidak ditemukan");
     }
   }
+<<<<<<< HEAD
 
   static Future<String> uploadImage(File imageFile) async {
     String fileName = basename(imageFile.path);
@@ -87,4 +106,6 @@ class Database {
       throw ('File upload failed, status: ${snapshot.state}');
     }
   }
+=======
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
 }

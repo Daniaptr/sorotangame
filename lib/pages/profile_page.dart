@@ -67,6 +67,7 @@ class _ProfileViewState extends State<ProfileView> {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+<<<<<<< HEAD
                   Stack(
                     children: [
                       CircleAvatar(
@@ -95,6 +96,15 @@ class _ProfileViewState extends State<ProfileView> {
                   SizedBox(height: 20),
                   Text(
                     _userData['username'] ?? '',
+=======
+                  CircleAvatar(
+                    radius: 80,
+                    backgroundImage: AssetImage('assets/images/profil.jpg'),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    _userData.data()?['username'] ?? '',
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -113,7 +123,11 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                   SizedBox(height: 10),
                   Text(
+<<<<<<< HEAD
                     _userData['phoneNumber'] ?? '',
+=======
+                    _userData.data()?['phoneNumber'] ?? '',
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,

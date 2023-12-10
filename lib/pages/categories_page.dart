@@ -39,8 +39,12 @@ class _CategoriesPageState extends State<CategoriesPage> {
           },
         ),
       ),
+<<<<<<< HEAD
       body: CategoriesView(
           searchController: searchController, data: Database.getData()),
+=======
+      body: CategoriesView(searchController: searchController, data: data),
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
     );
   }
 }
@@ -53,7 +57,11 @@ class CategoriesView extends StatelessWidget {
   });
 
   final TextEditingController searchController;
+<<<<<<< HEAD
   final Stream<QuerySnapshot> data;
+=======
+  final List<GameData> data;
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
 
   @override
   Widget build(BuildContext context) {

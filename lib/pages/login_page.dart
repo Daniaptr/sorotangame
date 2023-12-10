@@ -2,7 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sorotangame/pages/home_page.dart';
+<<<<<<< HEAD
 import 'package:sorotangame/pages/register.dart';
+=======
+import 'package:sorotangame/pages/signup_page.dart';
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
 import 'package:sorotangame/server/firebase_auth_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -116,6 +120,31 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+<<<<<<< HEAD
+=======
+              SizedBox(height: 5),
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpPage(),
+                        ),
+                        (route) => false);
+                  },
+                  child: Text(
+                    'Lupa Password?',
+                    style: GoogleFonts.bubblegumSans(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
@@ -138,12 +167,67 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+<<<<<<< HEAD
+=======
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      // Tambahkan logika login dengan Google di sini
+                    },
+                    icon: Icon(Icons.g_mobiledata),
+                    label: Text(
+                      'Login with Google',
+                      style: GoogleFonts.bubblegumSans(
+                        fontSize: 16, // Ukuran font
+                        color: Colors.white, // Warna teks
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.purple, // Warna background
+                      onPrimary: Colors.white, // Warna teks
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(20), // Bentuk tombol
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10), // Padding
+                    ),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      // Tambahkan logika login dengan Facebook di sini
+                    },
+                    icon: Icon(Icons.facebook),
+                    label: Text(
+                      'Login with Facebook',
+                      style: GoogleFonts.bubblegumSans(
+                        fontSize: 16, // Ukuran font
+                        color: Colors.white, // Warna teks
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.purple, // Warna background
+                      onPrimary: Colors.white, // Warna teks
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(20), // Bentuk tombol
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10), // Padding
+                    ),
+                  ),
+                ],
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
               ),
               SizedBox(height: 10),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).push(
+<<<<<<< HEAD
                     MaterialPageRoute(builder: (context) => RegisterPage()),
+=======
+                    MaterialPageRoute(builder: (context) => SignUpPage()),
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
                   );
                 },
                 child: Text('Belum memiliki akun? Sign Up'),

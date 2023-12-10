@@ -24,6 +24,7 @@ class _PopularWidgetState extends State<PopularWidget> {
   Widget build(BuildContext context) {
     return Container(
       height: 180,
+<<<<<<< HEAD
       child: StreamBuilder<QuerySnapshot>(
         stream: sorotangame,
         builder: (context, snapshot) {
@@ -35,6 +36,27 @@ class _PopularWidgetState extends State<PopularWidget> {
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
                   const Color.fromARGB(115, 206, 43, 43),
+=======
+      child: CarouselSlider.builder(
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index, int realIndex) {
+          Map<String, dynamic> game = data_game[index];
+          return Builder(
+            builder: (BuildContext context) {
+              return Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                decoration: BoxDecoration(
+                    // color: Colors.amber,
+                    ),
+                child: Column(
+                  children: [
+                    Image.network(
+                      game['imageUrl1'],
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+>>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
                 ),
               ),
             );
