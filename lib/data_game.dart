@@ -50,4 +50,3 @@ class GameData {
     return data;
   }
 }
-

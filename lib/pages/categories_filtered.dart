@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sorotangame/model/game_data.dart';
 import 'package:sorotangame/pages/desc_page.dart';
-import 'package:sorotangame/widgets/kategori_widget.dart';
 
-class CategoriesPage extends StatefulWidget {
-  CategoriesPage({Key? key}) : super(key: key);
+class CategoriesPageFilter extends StatefulWidget {
+  final String selectedCategory;
+  CategoriesPageFilter({Key? key, required this.selectedCategory})
+      : super(key: key);
 
   @override
-  _CategoriesPageState createState() => _CategoriesPageState();
+  _CategoriesPageFilterState createState() => _CategoriesPageFilterState();
 }
 
-class _CategoriesPageState extends State<CategoriesPage> {
+class _CategoriesPageFilterState extends State<CategoriesPageFilter> {
   // Declare a TextEditingController for the search field
   TextEditingController searchController = TextEditingController();
 
@@ -39,21 +40,25 @@ class _CategoriesPageState extends State<CategoriesPage> {
           },
         ),
       ),
-      body: CategoriesView(
-          searchController: searchController, data: Database.getData()),
+      body: CategoriesViewFiltered(
+          searchController: searchController,
+          data: Database.getData(),
+          selectedCategory: widget.selectedCategory),
     );
   }
 }
 
-class CategoriesView extends StatelessWidget {
-  const CategoriesView({
+class CategoriesViewFiltered extends StatelessWidget {
+  const CategoriesViewFiltered({
     super.key,
     required this.searchController,
     required this.data,
+    required this.selectedCategory,
   });
 
   final TextEditingController searchController;
   final Stream<QuerySnapshot> data;
+  final String selectedCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -94,10 +99,6 @@ class CategoriesView extends StatelessWidget {
               ),
             ),
           ),
-          CategoriesWidget(),
-          SizedBox(
-            height: 10,
-          ),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: data,
@@ -115,7 +116,10 @@ class CategoriesView extends StatelessWidget {
                     ),
                   );
                 } else if (snapshot.hasData) {
-                  List<DocumentSnapshot> items = snapshot.data!.docs;
+                  List<DocumentSnapshot> items = snapshot.data!.docs
+                      .where((game) =>
+                          game["genre"] == selectedCategory.toLowerCase())
+                      .toList();
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,

@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Color(0xffc1aebe), // Tambahkan warna latar belakang
       body: Center(
         child: Image.asset(
-          "images/logo.png",
+          "assets/images/logo.png",
           width: 150, // Ganti ukuran gambar sesuai kebutuhan
           height: 150, // Ganti ukuran gambar sesuai kebutuhan
         ),

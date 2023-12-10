@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:sorotangame/pages/categories_page.dart';
 import 'package:sorotangame/pages/home_page.dart';
-import 'package:sorotangame/pages/profile_page.dart';
+import 'package:sorotangame/pages/profile.dart';
 
 class CustomNavBar extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   final List<Widget> _pages = [
     HomePage(),
     CategoriesPage(),
-    ProfilePage(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
