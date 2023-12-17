@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sorotangame/pages/login_page.dart';
-import 'package:sorotangame/server/firebase_auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _phoneNumberTextfieldcontroller = TextEditingController();
   final CollectionReference _users =
       FirebaseFirestore.instance.collection('users');
-  final FirebaseAuthService _auth = FirebaseAuthService();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -35,7 +35,11 @@ class _RegisterPageState extends State<RegisterPage> {
     String password = _passwordTextfieldcontroller.text;
     String name = _nameTextfieldcontroller.text;
     String phoneNumber = _phoneNumberTextfieldcontroller.text;
-    User? user = await _auth.registerwithEmailandPassword(email, password);
+    User? user = (await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    ))
+        .user;
     await _users.doc(user!.uid).set({
       'name': name,
       'email': email,
@@ -80,13 +84,12 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                const Text(
-                  "Sign Up",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
+                Text(
+                  "SIGN UP",
+                  style: GoogleFonts.bubblegumSans(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    letterSpacing: 1.5,
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -127,9 +130,11 @@ class _RegisterPageState extends State<RegisterPage> {
         controller: controller,
         decoration: InputDecoration(
           labelText: hintText,
-          labelStyle: TextStyle(
-            fontSize: 18,
-            color: Colors.white,
+          labelStyle: GoogleFonts.bubblegumSans(
+            textStyle: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
           ),
           border: OutlineInputBorder(borderSide: BorderSide.none),
           prefixIcon: Icon(
@@ -137,8 +142,10 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.white,
           ),
         ),
-        style: TextStyle(
-          color: Colors.white,
+        style: GoogleFonts.bubblegumSans(
+          textStyle: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );
@@ -154,9 +161,11 @@ class _RegisterPageState extends State<RegisterPage> {
         controller: _passwordTextfieldcontroller,
         decoration: InputDecoration(
           labelText: hintText,
-          labelStyle: TextStyle(
-            fontSize: 18,
-            color: Colors.white,
+          labelStyle: GoogleFonts.bubblegumSans(
+            textStyle: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
           ),
           border: OutlineInputBorder(borderSide: BorderSide.none),
           prefixIcon: Icon(
@@ -176,8 +185,10 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         obscureText: !_isPasswordVisible,
-        style: TextStyle(
-          color: Colors.white,
+        style: GoogleFonts.bubblegumSans(
+          textStyle: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );
@@ -187,12 +198,12 @@ class _RegisterPageState extends State<RegisterPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
+        Text(
           "Have an account? ",
-          style: TextStyle(
+          style: GoogleFonts.bubblegumSans(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
           ),
         ),
         GestureDetector(
@@ -207,10 +218,10 @@ class _RegisterPageState extends State<RegisterPage> {
           },
           child: Text(
             "Login",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
+            style: GoogleFonts.bubblegumSans(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.purple,
             ),
           ),
         ),
@@ -232,13 +243,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.circular(20),
               ),
               onPressed: () => signUp(),
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 child: Text(
                   "Register",
-                  style: TextStyle(
+                  style: GoogleFonts.bubblegumSans(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontSize: 16,
                   ),
                 ),
               ),

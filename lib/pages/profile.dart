@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sorotangame/pages/login_page.dart';
 
@@ -70,7 +71,14 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text(
+          'Profile',
+          style: GoogleFonts.bubblegumSans(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Color(0xffc1aebe),
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.exit_to_app),
@@ -79,14 +87,35 @@ class _ProfileState extends State<Profile> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Konfirmasi Logout'),
-                    content: Text('Apakah Anda yakin akan logout?'),
+                    title: Text(
+                      'Konfirmasi Logout',
+                      style: GoogleFonts.bubblegumSans(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xffc1aebe),
+                      ),
+                    ),
+                    content: Text(
+                      'Apakah Anda yakin akan logout?',
+                      style: GoogleFonts.bubblegumSans(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xffc1aebe),
+                      ),
+                    ),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: Text('Batal'),
+                        child: Text(
+                          'Batal',
+                          style: GoogleFonts.bubblegumSans(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffc1aebe),
+                          ),
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -98,7 +127,14 @@ class _ProfileState extends State<Profile> {
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Anda berhasil logout dari akun'),
+                                content: Text(
+                                  'Anda berhasil logout dari akun',
+                                  style: GoogleFonts.bubblegumSans(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xffc1aebe),
+                                  ),
+                                ),
                                 duration: Duration(seconds: 2),
                               ),
                             );
@@ -106,7 +142,14 @@ class _ProfileState extends State<Profile> {
                             print('Error signing out: $error');
                           });
                         },
-                        child: Text('Ya'),
+                        child: Text(
+                          'Ya',
+                          style: GoogleFonts.bubblegumSans(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffc1aebe),
+                          ),
+                        ),
                       ),
                     ],
                   );
@@ -150,7 +193,7 @@ class _ProfileState extends State<Profile> {
               ProfileTile(ikon: Icons.person, title: "Name", isi: name),
               ProfileTile(ikon: Icons.email, title: "Email", isi: email),
               ProfileTile(
-                  ikon: Icons.phone, title: "phoneNumber", isi: phoneNumber),
+                  ikon: Icons.phone, title: "Phone Number", isi: phoneNumber),
             ],
           ),
         ),

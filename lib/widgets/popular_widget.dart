@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sorotangame/model/game_data.dart';
+import 'package:sorotangame/pages/desc_page.dart';
 
 class PopularWidget extends StatefulWidget {
   PopularWidget({Key? key}) : super(key: key);
@@ -17,14 +18,12 @@ class _PopularWidgetState extends State<PopularWidget> {
   void initState() {
     super.initState();
     sorotangame = Database.getData();
-    // sorotangame = FirebaseFirestore.instance.collection('game').snapshots();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 180,
-<<<<<<< HEAD
       child: StreamBuilder<QuerySnapshot>(
         stream: sorotangame,
         builder: (context, snapshot) {
@@ -36,27 +35,6 @@ class _PopularWidgetState extends State<PopularWidget> {
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
                   const Color.fromARGB(115, 206, 43, 43),
-=======
-      child: CarouselSlider.builder(
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index, int realIndex) {
-          Map<String, dynamic> game = data_game[index];
-          return Builder(
-            builder: (BuildContext context) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(
-                    // color: Colors.amber,
-                    ),
-                child: Column(
-                  children: [
-                    Image.network(
-                      game['imageUrl1'],
-                      fit: BoxFit.cover,
-                    ),
-                  ],
->>>>>>> 7886a56aa30fb3dd0b92fe27dc20c1fb389e0d30
                 ),
               ),
             );
@@ -68,25 +46,40 @@ class _PopularWidgetState extends State<PopularWidget> {
               itemBuilder: (BuildContext context, int index, int realIndex) {
                 DocumentSnapshot game = items[index]; // Ambil data per item
 
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(
-                          // color: Colors.amber,
-                          ),
-                      child: Column(
-                        children: [
-                          Image.network(
-                            game['imageUrl1'],
-                            fit: BoxFit.cover,
-                          ),
-                          // Tambahkan widget lainnya di sini sesuai kebutuhan
-                        ],
+                return GestureDetector(
+                  onTap: () {
+                    // Navigasi ke halaman detail saat gambar diklik
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DescPage(
+                          avatar: items[index]["avatar"],
+                          name: items[index]["name"],
+                          genre: items[index]["genre"],
+                          rating: items[index]["rating"],
+                          desk: items[index]["desk"],
+                          imageUrl1: items[index]["imageUrl1"],
+                          imageUrl2: items[index]["imageUrl2"],
+                          imageUrl3: items[index]["imageUrl3"],
+                        ),
                       ),
                     );
                   },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                        // color: Colors.amber,
+                        ),
+                    child: Column(
+                      children: [
+                        Image.network(
+                          game['imageUrl1'],
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
               options: CarouselOptions(

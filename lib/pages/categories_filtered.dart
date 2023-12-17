@@ -65,39 +65,8 @@ class CategoriesViewFiltered extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(0),
-            child: Container(
-              margin: EdgeInsets.all(16.0),
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(65, 170, 170, 170),
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 5),
-                    height: 50,
-                    width: 200,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Search Category...",
-                      ),
-                      controller:
-                          searchController, // Assign the searchController
-                    ),
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.search,
-                    size: 27,
-                    color: Color(0xffc1aebe),
-                  ),
-                ],
-              ),
-            ),
+          SizedBox(
+            height: 10,
           ),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
